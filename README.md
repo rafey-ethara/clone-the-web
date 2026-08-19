@@ -8,33 +8,6 @@ Give your AI coding agent a URL and watch it recreate the website as a clean Nex
 
 **Best results with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) + Opus 5. Works with Codex, Cursor, Gemini, and more.**
 
-[![Use this template](https://img.shields.io/badge/Use_this_template-Create_your_copy-2ea44f?style=for-the-badge&logo=github&logoColor=white)](https://github.com/JCodesMore/ai-website-cloner-template/generate) [![Discord](https://img.shields.io/badge/Join_the_community-Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/hrTSX5yTpB)
-
-[Quick Start](#quick-start) · [Watch Demo](#demo) · [Supported Platforms](#supported-platforms)
-
-<a href="https://github.com/JCodesMore/ai-website-cloner-template/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a> <a href="https://github.com/JCodesMore/ai-website-cloner-template"><img src="https://img.shields.io/github/stars/JCodesMore/ai-website-cloner-template?style=flat" alt="Stars" /></a> <img src="https://img.shields.io/endpoint?url=https://gittokens.rsamf.com/badge/JCodesMore/ai-website-cloner-template" alt="tokens" />
-
-  <a href="https://trendshift.io/repositories/24302?utm_source=repository-badge&amp;utm_medium=badge&amp;utm_campaign=badge-repository-24302" target="_blank" rel="noopener noreferrer"><img src="https://trendshift.io/api/badge/repositories/24302" alt="JCodesMore%2Fai-website-cloner-template | Trendshift" width="250" height="55" /></a> <a href="https://www.star-history.com/jcodesmore/ai-website-cloner-template/"><picture><source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/badge?repo=JCodesMore/ai-website-cloner-template&amp;theme=dark" /><source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/badge?repo=JCodesMore/ai-website-cloner-template" /><img alt="Star History Global Rank" src="https://api.star-history.com/badge?repo=JCodesMore/ai-website-cloner-template" width="216" height="55" /></picture></a>
-
-<br />
-<sub><strong>SPONSORED BY</strong></sub>
-<br /><br />
-<a href="https://www.rapidproxy.io/?ref=JCM"><img src="docs/assets/sponsors/rapidproxy-banner.png" alt="RapidProxy residential proxy service" width="680" /></a>
-<br />
-<sub>Power your scraping and automation with 90M+ residential IPs, 500MB free traffic, and non-expiring bandwidth. <a href="https://www.rapidproxy.io/?ref=JCM">Explore RapidProxy →</a></sub>
-<br /><br />
-<a href="https://www.atlascloud.ai/?utm_source=github&amp;utm_medium=sponsor&amp;utm_campaign=ai-website-cloner-template">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/sponsors/atlas-cloud-logo-white.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="docs/assets/sponsors/atlas-cloud-logo.svg" />
-    <img src="docs/assets/sponsors/atlas-cloud-logo.svg" alt="Atlas Cloud" width="240" />
-  </picture>
-</a>
-<br />
-<sub>Generate AI images, video, audio, and 3D assets through one API. <a href="https://www.atlascloud.ai/?utm_source=github&amp;utm_medium=sponsor&amp;utm_campaign=ai-website-cloner-template">Explore Atlas Cloud →</a></sub>
-
-</div>
-
 ---
 
 ## Demo
