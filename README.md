@@ -1,187 +1,117 @@
-<div align="center">
+# Website → PRD
 
-# AI Website Cloner Template
+Turn any URL into a **zero-asset, buildable PRD**: a specification document complete
+enough that another model can rebuild the site from the text alone.
 
-### Clone any website with one command
-
-Give your AI coding agent a URL and watch it recreate the website as a clean Next.js app.
-
-**Best results with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) + Opus 5. Works with Codex, Cursor, Gemini, and more.**
+No code is produced. The deliverable is Markdown.
 
 ---
 
-## Demo
+## Usage
 
-[![Watch the demo](docs/design-references/comparison.png)](https://youtu.be/O669pVZ_qr0)
+### 1. Connect a browser
 
-> Click the image above to watch the full demo on YouTube.
+The workflow measures a live page, so it needs browser automation over MCP —
+[Chrome MCP](https://claude.ai/chrome) is preferred; Playwright, Puppeteer and
+Browserbase also work. Nothing else is required.
 
-## Quick Start
+### 2. Ask for a PRD
 
-> **Important:** Start by making your own copy with GitHub's **Use this template** button. Do not clone this template repository directly for your website project, and do not open pull requests here with your generated website.
-
-1. **Create your own repository from this template**
-
-   On the GitHub page for this project, click **Use this template**, then click **Create a new repository**.
-
-   Give your new repository a name, choose whether it should be public or private, then click **Create repository**. If GitHub shows an **Include all branches** option, you can leave it off.
-
-   This gives you your own separate project to work in, so your website changes stay in your account instead of coming back to the main template.
-
-2. **Open your new repository on your computer**
-
-   After GitHub creates your copy, open that new repository. Click **Code** and open or clone your new repository with your preferred coding tool.
-
-   If you use the terminal, the command will look like this:
-
-   ```bash
-   git clone https://github.com/YOUR-USERNAME/YOUR-NEW-REPOSITORY.git
-   cd YOUR-NEW-REPOSITORY
-   ```
-
-3. **Install dependencies**
-   ```bash
-   npm install
-   ```
-4. **Start your AI agent** — Claude Code recommended:
-   ```bash
-   claude --chrome
-   ```
-5. **Run the skill**:
-   ```
-   /clone-website <target-url1> [<target-url2> ...]
-   ```
-6. **Customize** (optional) — after the base clone is built, modify as needed
-
-> Most supported clients expose `/clone-website` directly. If your client activates skills from natural-language requests, enter `Clone <target-url> using the clone-website workflow`. Project instructions are in `AGENTS.md`.
-
-## Supported Platforms
-
-| Agent                                                         | Status                     |
-| ------------------------------------------------------------- | -------------------------- |
-| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | **Recommended** — Opus 5   |
-| [Codex CLI](https://github.com/openai/codex)                  | Supported                  |
-| [OpenCode](https://opencode.ai/)                              | Supported                  |
-| [GitHub Copilot](https://github.com/features/copilot)         | Supported                  |
-| [Kiro](https://kiro.dev/)                                    | Supported                  |
-| [Cursor](https://cursor.com/)                                 | Supported                  |
-| [Windsurf](https://codeium.com/windsurf)                      | Supported                  |
-| [Gemini CLI](https://github.com/google-gemini/gemini-cli)     | Supported                  |
-| [Cline](https://github.com/cline/cline)                       | Supported                  |
-| [Roo Code](https://github.com/RooCodeInc/Roo-Code)            | Supported                  |
-| [Continue](https://continue.dev/)                             | Supported                  |
-| [Amazon Q](https://aws.amazon.com/q/developer/)               | Supported                  |
-| [Augment Code](https://www.augmentcode.com/)                  | Supported                  |
-
-## Prerequisites
-
-- [Node.js](https://nodejs.org/) 24+
-- An AI coding agent (see [Supported Platforms](#supported-platforms))
-
-## Tech Stack
-
-- **Next.js 16** — App Router, React 19, TypeScript strict
-- **shadcn/ui** — Radix primitives + Tailwind CSS v4
-- **Tailwind CSS v4** — oklch design tokens
-- **Lucide React** — default icons (replaced by extracted SVGs during cloning)
-
-## How It Works
-
-The `/clone-website` skill runs a multi-phase pipeline:
-
-```mermaid
-flowchart LR
-    P1["1. Reconnaissance"] --> P2["2. Foundation"]
-    P2 --> P3["3. Component Specs"]
-    P3 --> P4["4. Parallel Build"]
-    P4 --> P5["5. Assembly and QA"]
-```
-
-1. **Reconnaissance** — screenshots, design token extraction, interaction sweep (scroll, click, hover, responsive)
-2. **Foundation** — updates fonts, colors, globals, downloads all assets
-3. **Component Specs** — writes detailed spec files (`docs/research/components/`) with exact computed CSS values, states, behaviors, and content
-4. **Parallel Build** — dispatches builder agents in git worktrees, one per section/component
-5. **Assembly & QA** — merges worktrees, wires up the page, runs visual diff against the original
-
-Each builder agent receives the full component specification inline — exact `getComputedStyle()` values, interaction models, multi-state content, responsive breakpoints, and asset paths. No guessing.
-
-## Use Cases
-
-- **Platform migration** — rebuild a site you own from WordPress/Webflow/Squarespace into a modern Next.js codebase
-- **Lost source code** — your site is live but the repo is gone, the developer left, or the stack is legacy. Get the code back in a modern format
-- **Learning** — deconstruct how production sites achieve specific layouts, animations, and responsive behavior by working with real code
-
-## Not Intended For
-
-- **Phishing or impersonation** — this project must not be used for deceptive purposes, impersonation, or any activity that breaks the law.
-- **Passing off someone's design as your own** — logos, brand assets, and original copy belong to their owners.
-- **Violating terms of service** — some sites explicitly prohibit scraping or reproduction. Check first.
-
-## Project Structure
+In Claude Code, from this repo:
 
 ```
-src/
-  app/              # Next.js routes
-  components/       # React components
-    ui/             # shadcn/ui primitives
-    icons.tsx       # Extracted SVG icons
-  lib/utils.ts      # cn() utility
-  types/            # TypeScript interfaces
-  hooks/            # Custom React hooks
-public/
-  images/           # Downloaded images from target
-  videos/           # Downloaded videos from target
-  seo/              # Favicons, OG images
-docs/
-  research/         # Extraction output & component specs
-  design-references/ # Screenshots
-scripts/
-  sync-agent-rules.sh  # Regenerate agent instruction files
-  sync-skills.mjs      # Regenerate /clone-website for all platforms
-.kiro/skills/          # Generated Kiro workspace skill
-.cline/skills/         # Generated Cline workspace skill
-.roo/skills/           # Generated Roo Code workspace skill
-.roo/commands/         # Generated Roo Code slash command
-AGENTS.md           # Agent instructions (single source of truth)
-CLAUDE.md           # Claude Code config (imports AGENTS.md)
-GEMINI.md           # Gemini CLI config (imports AGENTS.md)
+/website-prd https://example.com
 ```
 
-## Commands
+Plain language works too — "make me a PRD of https://example.com", "spec out this site
+so an LLM can rebuild it". Add anything you want honoured, for example:
 
-```bash
-npm run dev    # Start dev server
-npm run build  # Production build
-npm run lint   # ESLint check
-npm run typecheck # TypeScript check
-npm run check  # Run lint + typecheck + build
+```
+/website-prd https://example.com   also emit TaskOrder.yaml
+/website-prd https://example.com   call the placeholder brand "Northwind"
 ```
 
-### If using docker
+### 3. Read the output
 
-```bash
-docker compose up app --build # build and run the app
-docker compose up dev --build # run the app in dev mode on port 3001
+```
+output/example/
+  PRD.md            the deliverable
+  TaskOrder.yaml    classification, when requested
+  notes.md          decisions, substitutions, anything unresolved
+  deny.txt          the brand-scrub list
+  evidence/         tokens, typography, animations, topology, behaviors, assets
+  screenshots/
 ```
 
-## Updating for Other Platforms
+The project name comes from the host. An existing folder is never overwritten — you
+will be asked first.
 
-Two source-of-truth files power all platform support. Edit the source, then run the sync script:
+### 4. Use it
 
-| What                   | Source of truth                         | Sync command                       |
-| ---------------------- | --------------------------------------- | ---------------------------------- |
-| Project instructions   | `AGENTS.md`                             | `bash scripts/sync-agent-rules.sh` |
-| `/clone-website` skill | `.claude/skills/clone-website/SKILL.md` | `node scripts/sync-skills.mjs`     |
+Hand `PRD.md` to any model with no other context and ask it to build the site. That is
+the whole point: the document carries everything, so nothing else needs to travel with
+it.
 
-Each script regenerates the platform-specific copies automatically. Agents that read the source files natively need no regeneration.
+**A run takes a while.** The workflow visits the page at three widths, sweeps scroll,
+hover and click states, samples a timeline after reload, and transcribes every graphic
+by hand. Depth is the product.
 
+---
 
-## Star History
+## What "zero-asset" means
 
-![Star History Chart](docs/assets/star-history.png)
+The output has **no file dependencies at all**. Every graphic is described as text:
 
-## License
+| Original | Becomes |
+|---|---|
+| Logos and wordmarks | Styled text — family, size, weight, tracking, plus ornaments as SVG primitives |
+| Photographs | A CSS gradient with named stops and a line motif in inline SVG |
+| Illustrations and UI mockups | Inline SVG built from primitives, with exact geometry |
+| Icons | Inline SVG, serialised verbatim |
+| Video | An animated CSS panel — gradient, sheen keyframes, play control |
+| Webfonts | A system or Google stack, substitution recorded |
+| Favicon | An inline SVG data URI |
 
-MIT
+The PRD is also **de-branded**. The target's name, its customers, its domain and its
+vendors are replaced with invented equivalents, so the model reading the document never
+learns which site it is describing. `deny.txt` records what was scrubbed, and the scrub
+is verified by grep rather than by eye.
 
-<sub>Translations: <a href="README.ja.md">日本語</a> · <a href="README.zh-CN.md">Simplified Chinese</a></sub>
+## Why the output is worth building from
+
+Most site-to-spec tools screenshot a page and narrate it. The expensive details are not
+in a screenshot, so this workflow measures instead:
+
+- **Every custom property, untruncated.** Sites routinely override their framework's
+  type scale. A page whose `text-6xl` is 70px rather than the framework's 60px will be
+  wrong in every heading if the spec assumes defaults — and that override is invisible
+  in any single element's computed style.
+- **Every `@keyframes` block, verbatim**, plus each element's resolved `animation`.
+- **A timeline pass** at t=0 / 300ms / 1s / 3s. Entrance animations — connectors drawing
+  themselves, digits typing in — appear in no static capture.
+- **Source recovery** where the bundler allows it, which yields the author's actual
+  class strings and timing constants rather than values inferred from the DOM.
+- **DOM attribute facts** such as `srcset` presence, because adding a `srcset` the
+  original did not have halves an image's rendered size on a high-DPR display.
+
+Every literal in the PRD traces to something measured. Nothing is recalled.
+
+## Example
+
+[`examples/example-PRD.md`](examples/example-PRD.md) is a full run against a payments
+platform marketing page: 24 sections, every graphic transcribed to text, all 30
+animations catalogued with exact keyframes, and numeric acceptance criteria. It sets the
+quality bar for what a run should produce.
+
+## Layout
+
+```
+.claude/skills/website-prd/   the workflow — the whole engine lives here
+scripts/source-recovery/      optional: recover component source from bundled JS
+examples/                     reference output
+output/                       generated PRDs land here
+```
+
+Tuning the workflow means editing
+[`.claude/skills/website-prd/SKILL.md`](.claude/skills/website-prd/SKILL.md). There is
+no build step and no configuration.

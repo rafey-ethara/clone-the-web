@@ -1,0 +1,95 @@
+# Deny list for output/highnote/PRD.md
+# One token per line. Matched case-insensitively; every hit must be inspected by
+# hand because several tokens are substrings of ordinary English words
+# (see the false-positive notes at the bottom).
+
+# --- the brand and its stem ---
+highnote
+high note
+hignote
+
+# --- brand-derived identifiers (the expensive leaks) ---
+rounded-highnote
+radius-highnote
+--radius-highnote
+hn-timeline
+hn-ops
+
+# --- internal design-system namespace ---
+--mint-
+mint-color
+mint-font
+mint-space
+mint-radius
+mint-duration
+mint-shadow
+mint-gradient
+mint-letter
+mint-line-height
+mint-paragraph
+mint-text
+
+# --- domains and hosts ---
+highnote.com
+docs.highnote.com
+dashboard.highnote.com
+graphassets.com
+us-west-2.graphassets
+hygraph
+vercel
+sentry
+googletagmanager
+GTM-PMM78L8T
+_next
+next.js
+nextjs
+
+# --- licensed font families ---
+Helvetica Now
+Helvetica Now Display
+Helvetica Now Text
+HelveticaNow
+
+# --- customers, partners and logos named on the page ---
+Lowe's
+Lowes
+BNY
+Splitit
+Netevia
+TripLink
+Fluz
+SpotOn
+Mudflap
+Samsung
+Coinflow
+Fillip
+GiveCard
+Givecard
+WorkWhile
+
+# --- competitors named in an article title ---
+TabaPay
+Astra
+
+# --- card networks shown in the checkout art ---
+Visa
+VISA
+Mastercard
+Amex
+American Express
+Discover
+
+# --- regulators and legal entities in the footer ---
+FinCEN
+Financial Crimes Enforcement Network
+Highnote Platform, Inc.
+Highnote Payments, Inc.
+
+# --- known false positives: inspect, do not auto-fail ---
+# "lowe"  matches allowed / lower / flowed / followed / below-the-fold
+# "astra" matches abstract / astral
+# "fillip" is an ordinary English noun
+# "mint"  matches the mint COLOUR family, which is retained deliberately;
+#         only the --mint-* design-system NAMESPACE is a leak
+# "note"  matches ordinary prose ("note that...") and is NOT a deny token on
+#         its own; only the full stem "highnote" is
