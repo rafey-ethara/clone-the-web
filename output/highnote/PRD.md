@@ -458,6 +458,47 @@ the four-column grids fold. `sm` and `md` only adjust column counts and type.
 Every section centres a `max-width: 1280px` container with `padding-inline: 20px`.
 At 1440 that gives a 1280px content column with 80px gutters.
 
+### 3.10 Which token families override the framework
+
+All 383 custom properties on `:root` were dumped and compared against the utility
+framework's defaults. The result splits three ways, and knowing which bucket a family
+is in tells you whether you can trust your framework knowledge for it.
+
+**Overridden — do not use framework defaults:**
+
+| Family | Status |
+|---|---|
+| `--text-*` | **Every step replaced.** See §3.2. This is the only genuine override, and it is the most consequential fact in this document. |
+
+**Added — these do not exist in the framework at all:**
+
+| Family | Members |
+|---|---|
+| `--text-*` additions | `--text-xxs` (12px/16px), `--text-20` (20px/28px), `--text-reset` (0/0) |
+| `--font-*` | `--font-display`, `--font-body` |
+| `--color-*` bare names | `bone`, `bone-50`, `ash`, `ash-50`, `clay`, `clay-20/30/50`, `green`, `blue`, `red`, `yellow`, `yellowB`, `yellowBG`, `dark-yellow`, `banner`, `blackBG`, `gray` |
+| `--color-*` semantic layer | every `surface-*`, `edge-*`, `foreground-*`, `button-*` token |
+| `--color-*` status families | `mint-*`, `garnet-*`, `iris-*`, `ochre-*`, `black-*` |
+| `--radius-*` | `--radius-card`, `--radius-nav`, `--radius-button`, `--radius-rounded`, `--radius-page`, `--radius-circle`, `--radius-20` |
+| `--animate-*` | `--animate-marquee`, `--animate-loader` |
+| `--shadow-*` | `--shadow-focus-ring`, `--shadow-overlay`, `--drop-shadow-nav` |
+| `--scale-*` | `--scale-103` |
+| `--container-*` | `--container-xxs` (16rem) |
+| `--ds-*` | the entire raw design-system layer (65 properties) |
+
+**Untouched — framework defaults, safe to assume:**
+
+`--spacing`, every `--breakpoint-*`, every `--container-*` except `xxs`, every
+`--tracking-*`, both `--leading-*`, every `--radius-*` inherited from the framework
+(`xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl` — note `sm` and `md` are authored as
+`calc(.5rem - 4px)` and `calc(.5rem - 2px)`, which resolve to the framework's
+`.25rem` and `.375rem`), every `--blur-*`, every `--ease-*`, both
+`--default-transition-*`, and the numbered colour ramps (`--color-red-500`,
+`--color-gray-400`, …).
+
+The practical consequence: **check the type scale, trust everything else.** The full
+untruncated dump is in `evidence/tokens.md`.
+
 ---
 
 ## 4. Global page structure
@@ -526,6 +567,18 @@ links, not `<button>` elements.
 The page loads 69 images, 2 videos and 49 inline SVGs. Every one of them is
 specified below as inline SVG geometry, a CSS gradient, or styled text. Nothing is
 referenced as a file.
+
+**Measured versus composed.** Two kinds of value appear in this section and it is
+worth knowing which you are reading. Everything recovered from the page — all SVG
+path data, viewBoxes, gradient coordinates and stops, filter parameters, animation
+durations, delays and easings — is **verbatim from the original** and must be
+reproduced exactly. The replacements for binary assets — the brand mark (§5.1), the
+twelve customer wordmarks (§5.2), the eight industry gradients (§5.12), the three
+article thumbnails (§5.13) and the two media panels (§5.14) — are **composed by this
+document**, because the originals were photographs, licensed logos and video files
+that cannot be transcribed. Their sizes, radii and positions are measured; their
+colours and geometry are invented to fit those measurements. Where a composed recipe
+appears, the surrounding frame, spacing and behaviour around it are still measured.
 
 ### 5.0 The composes trap — read before building any illustrated component
 
@@ -2391,11 +2444,11 @@ Default transition: `0.15s cubic-bezier(0.4, 0, 0.2, 1)`.
 
 ### 18.4 Keyframes defined but not used on this page
 
-The extracted stylesheet declares 57 `@keyframes` blocks. The 34 above are the ones
-this page resolves to. The remaining 23 are shipped for other routes and no element
-on the home page references any of them. They are listed here so that the index
-accounts for every block found, and so that a rebuild does not go hunting for a
-missing animation:
+The extracted stylesheet declares 57 `@keyframes` blocks. **37** of them are the ones
+this page resolves to, listed in §18.1 and §18.2. The remaining **20** are shipped for
+other routes and no element on the home page references any of them. They are listed
+here so that the index accounts for every block found, and so that a rebuild does not
+go hunting for a missing animation:
 
 | Keyframe | Note |
 |---|---|
