@@ -2350,8 +2350,16 @@ time a visitor reaches the products section, its connector has long finished dra
 | `pconn-m-flowPath` | Mobile flow ×2 | 3200ms | infinite | §5.8 |
 | `uconn-m-flowCurve` | Mobile pulses ×2 | 2400ms | infinite | §5.9 |
 | `uni-bgPulse` | Icon disc | 12000ms | infinite | §5.10 |
-| `uni-orbit1`–`5` | Icon blobs | 7, 9, 11, 8, 13s | infinite | §5.10 |
-| `uni-pulse1`–`5` | Icon blobs | 4, 5, 6, 3.5, 7s | infinite alternate | §5.10 |
+| `uni-orbit1` | Icon blob 1 | 7000ms | infinite | §5.10 |
+| `uni-orbit2` | Icon blob 2 | 9000ms | infinite | §5.10 |
+| `uni-orbit3` | Icon blob 3 | 11000ms | infinite | §5.10 |
+| `uni-orbit4` | Icon blob 4 | 8000ms | infinite | §5.10 |
+| `uni-orbit5` | Icon blob 5 | 13000ms | infinite | §5.10 |
+| `uni-pulse1` | Icon blob 1 radius | 4000ms | infinite alternate | §5.10 |
+| `uni-pulse2` | Icon blob 2 radius | 5000ms | infinite alternate | §5.10 |
+| `uni-pulse3` | Icon blob 3 radius | 6000ms | infinite alternate | §5.10 |
+| `uni-pulse4` | Icon blob 4 radius | 3500ms | infinite alternate | §5.10 |
+| `uni-pulse5` | Icon blob 5 radius | 7000ms | infinite alternate | §5.10 |
 | `launch-sweep` | Stopwatch hand | 2000ms | infinite | §5.11 |
 | `diff-stepOut` | Right figure | 2500ms | infinite | §5.11 |
 | `innov-spin` | Star | 5000ms | infinite | §5.11 |
@@ -2381,7 +2389,44 @@ video files and has no counterpart in the original.
 
 Default transition: `0.15s cubic-bezier(0.4, 0, 0.2, 1)`.
 
-### 18.4 Motion budget
+### 18.4 Keyframes defined but not used on this page
+
+The extracted stylesheet declares 57 `@keyframes` blocks. The 34 above are the ones
+this page resolves to. The remaining 23 are shipped for other routes and no element
+on the home page references any of them. They are listed here so that the index
+accounts for every block found, and so that a rebuild does not go hunting for a
+missing animation:
+
+| Keyframe | Note |
+|---|---|
+| `spin` | Wrapped by `--animate-spin` = `spin 1s linear infinite` |
+| `pulse` | Wrapped by `--animate-pulse` = `pulse 2s cubic-bezier(.4,0,.6,1) infinite` |
+| `marquee` | Wrapped by `--animate-marquee` = `marquee 40s linear infinite` |
+| `marqueereverse` | Mirror of `marquee`, translating `+50%` |
+| `loader` | Wrapped by `--animate-loader` = `loader 2s ease-in-out infinite` |
+| `entrance` | `opacity 0→1`, `translateY 8px→0` |
+| `enter` | Utility-framework enter primitive, driven by `--tw-enter-*` properties |
+| `exit` | Utility-framework exit primitive, driven by `--tw-exit-*` properties |
+| `fadeup` | `opacity 0→1`, `blur(2px)→0`, `translateY 1rem→0` |
+| `accordion-down` | `height: 0` → content height |
+| `accordion-up` | Content height → `height: 0` |
+| `tl-card-in` | `opacity 0→1`, `translateY(10px) scale(.99)` → none |
+| `tl-text-in` | `opacity 0→1`, `blur(8px)→0`, `translateY 8px→0` |
+| `tl-body-in` | `opacity 0→1`, `blur(5px)→0`, `translateY 8px→0` |
+| `tl-rule-wipe` | `scaleX 0→1` |
+| `tl-rail-draw` | `scaleY 0→1` |
+| `tl-rail-head` | `opacity 0→.85→0` with `background-position -30%→130%` |
+| `tl-dot-in` | `opacity 0→1`, `scale .2→1.22→1` |
+| `tl-dot-pulse` | Expanding box-shadow ring, `rgba(9,9,11,.28)` → transparent at 9px |
+| `tl-check-draw` | `stroke-dashoffset 11px→0` |
+
+Nine of these (`tl-*`) form one coherent group — a vertical timeline with a drawn
+rail, a travelling highlight head, popping dots and check marks that draw themselves.
+It is a complete component that simply does not appear on this route.
+
+Do not implement any of the above for this page. They are documented, not required.
+
+### 18.5 Motion budget
 
 Roughly **90 concurrent animations** run at 1440. That is intentional and it is why
 the `@media (max-width: 1023px)` suppressions in §19.3 exist. Do not skip them —
