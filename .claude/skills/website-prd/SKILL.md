@@ -281,10 +281,10 @@ being built and how hard it is.
 
 Think of the reader as a founder or designer briefing a developer. They will never
 open `PRD.md`. They still need to know what the page does, what it feels like, which
-parts are quietly expensive, and what the jargon in the spec actually means.
+parts are intricate, and what the jargon in the spec actually means.
 
 **This is not a summary of the PRD.** It answers different questions. `PRD.md` says
-*how to build it*; `PRD_description.md` says *what it is and what it will cost you*.
+*how to build it*; `PRD_description.md` says *what it is and how it behaves*.
 
 ### Rules
 
@@ -293,8 +293,9 @@ parts are quietly expensive, and what the jargon in the spec actually means.
 - **Describe what a person sees**, in physical terms. Motion is the hardest thing to
   convey; reach for real-world analogies.
 - **Every technical term gets explained in the same breath**, or moved to the glossary.
-- **Be honest about effort.** If something looks simple and is not, say so — that is
-  the single most useful thing this document does.
+- **Flag what is deceptive.** If something looks simple but has a catch, name the
+  catch. Do not translate that into a difficulty score or a time estimate — nothing in
+  the capture measures either, and an invented number is what a reader will quote back.
 
 ### Spine
 
@@ -302,30 +303,29 @@ parts are quietly expensive, and what the jargon in the spec actually means.
 1  What this is           one paragraph, plainly
 2  What it feels like     the experience, start to finish
 3  The page, top to bottom  a walkthrough in ordinary words
-4  Effects, and how hard   the effort table (below)
-5  What is genuinely hard  where the time actually goes
+4  Effects, one by one    the effects table (below)
+5  What is fiddly          the parts that are easy to get subtly wrong
 6  Jargon, translated      glossary of every technical term in PRD.md
 ```
 
-### The effort table
+### The effects table
 
 The centrepiece. One row per notable visual or interactive effect:
 
 ```markdown
-| Effect | Effort | Built with | What you actually see |
-|---|---|---|---|
-| Interactive fluid simulation | ●●● | A 3D graphics library running on the graphics card | Colour swirls and smears under the cursor like paint stirred into water, settling slowly when you stop moving. |
-| Headline word swap | ●● | Plain styling, on a timer | One word above the headline changes every couple of seconds — each rises from below, holds, then slides up and out. |
-| Card lift on hover | ● | Plain styling | The card floats up slightly and a small arrow appears, as if the card were paper being picked up. |
+| Effect | Built with | What you actually see |
+|---|---|---|
+| Interactive fluid simulation | A 3D graphics library running on the graphics card | Colour swirls and smears under the cursor like paint stirred into water, settling slowly when you stop moving. |
+| Headline word swap | Plain styling, on a timer | One word above the headline changes every couple of seconds — each rises from below, holds, then slides up and out. |
+| Card lift on hover | Plain styling | The card floats up slightly and a small arrow appears, as if the card were paper being picked up. |
 ```
 
-- **●** an afternoon — ordinary styling, no custom logic
-- **●●** a day or two — timed sequences, hand-drawn graphics, coordinated states
-- **●●●** a week or more — physics, 3D, particle systems, scroll-linked scrubbing, or
-  anything needing custom shader work
+Order the rows so the most involved effects come first — the reader wants the
+substantial parts up top.
 
-Rate against the *rebuild*, not the original. Sort hardest first — the reader wants the
-expensive parts up top.
+**Do not rate difficulty or estimate build time.** Nothing in the capture measures
+either, and an invented number is the one thing in this document a reader will quote
+back at you. Describe what the effect is and let them judge.
 
 ### Glossary
 
@@ -353,7 +353,8 @@ Do not report done until every check passes. Report the results honestly.
 | G9 | Every custom-property family that overrides a framework default is declared |
 | G10 | No application code was written |
 | G11 | `PRD_description.md` exists, and contains no hex code, pixel value or class name |
-| G12 | Every notable effect in `PRD.md` has a row in the effort table |
+| G12 | Every notable effect in `PRD.md` has a row in the effects table, and no row
+       carries a difficulty rating or time estimate |
 | G13 | Every technical term used in `PRD.md` appears in the glossary |
 | G14 | The deny-list grep passes on `PRD_description.md` too |
 

@@ -1,10 +1,10 @@
 # Ledgra home page — in plain language
 
-The companion to `PRD.md`. That document tells a developer *how* to build the page,
-in exact numbers. This one tells you *what it is* and *what it will cost you*.
+The companion to `PRD.md`. That document tells a developer *how* to build the page, in
+exact numbers. This one describes *what it is* and *how it behaves*.
 
-No code, no colour codes, no measurements. If you are paying for this build or deciding
-whether to attempt it, read this and skip the other one.
+No code, no colour codes, no measurements. If you want to understand this page without
+reading a specification, read this and skip the other one.
 
 ---
 
@@ -106,39 +106,39 @@ it and reveals a small arrow, as though you had picked up a piece of paper.
 
 ---
 
-## 4. Effects, and how hard they are
+## 4. Effects, one by one
 
-Hardest first. One dot is an afternoon, two is a day or two, three is a week or more.
+Most involved first.
 
-| Effect | Effort | Built with | What you actually see |
-|---|---|---|---|
-| The hero orb | ●●● | Hand-drawn vector shapes with layered colour washes, each on its own slow timer | Nine enormous rings of light rising from below the screen, tinted cyan with green bleeding in from the upper right and yellow from the lower left. Each ring drifts independently on a cycle 20–30 seconds long, so the shape never repeats for minutes at a time. |
-| The four product illustrations | ●●● | Hand-drawn vector art with soft-focus blur effects | A green payment card, a checkout form mid-payment, a credit approval receipt, and a scrolling list of payment rails. Each has a large blurred blob of colour drifting slowly behind it, which is what makes plain white cards feel warm. |
-| The two wiring diagrams | ●●● | Hand-drawn line art that draws itself, then loops | Thin lines that sketch themselves onto the page when it loads — stems dropping from cards, sweeping along a rail, fanning into tiles — after which small pulses of light travel the routes forever. The routes deliberately cross, because each product feeds several capabilities. |
-| The glowing platform disc | ●●● | Vector shapes with blur, several independent orbits | A green disc with four soft colour blobs orbiting inside it at different speeds, each also breathing in and out on its own separate rhythm. On phones this is replaced by a plain gradient, because the blur is too expensive for small devices. |
-| The code panel that types itself | ●● | A small amount of custom logic on a timer | A dark editor panel that reveals a request one line every fraction of a second, pauses, then reveals the response faster, holds for five seconds and starts over. A cursor blinks on whichever line is currently being written. |
-| The cycling headline word | ●● | Plain styling, on a timer | One word above the headline changes every two and a half seconds — each rises from below, holds, then slides up and out. Only ever one word visible. |
-| The self-filling checkout form | ●● | Plain styling, on a timer | Inside one product card, a card number types itself in four groups. Partway through, three of the four card-brand badges fade away and the remaining one slides across to take their place, as if the form had recognised the card. |
-| The endless list of payment rails | ●● | Plain styling, on a timer | A column of small labelled chips scrolling slowly upward forever, fading out at the top. It never visibly restarts, which is why the list is secretly printed twice. |
-| The closing aurora | ●● | A vector shape that morphs between drawn states | A wide band of blurred colour under the last section, its silhouette slowly rippling between four shapes on an eight-second loop. |
-| The video tiles | ●● | Video, plus a pop-up panel | Two black tiles with a partner logo and a play button. Clicking one dims the page and opens the full video. Dismissed by clicking away, the close button, or Escape. |
-| The menu dropdowns | ● | Plain styling | Hovering a menu item fades a small white panel in while it rises slightly. There is an invisible strip bridging the gap so the panel does not vanish as your cursor travels toward it. |
-| Cards lifting on hover | ● | Plain styling | The card floats up slightly, gains a soft paper-like shadow, and a small arrow slides in beside the title. |
-| Industry images pushing in | ● | Plain styling | The photograph inside the card scales up slightly within its rounded frame, so it feels like leaning closer. Deliberately disabled on touchscreens. |
-| Footer link arrows | ● | Plain styling | A small arrow slides in beside a link on hover — the quickest movement on the page. |
-| The promo strip | ● | Plain styling | The strip darkens slightly and its arrow shuffles right. |
+| Effect | Built with | What you actually see |
+|---|---|---|
+| The hero orb | Hand-drawn vector shapes with layered colour washes, each on its own slow timer | Nine enormous rings of light rising from below the screen, tinted cyan with green bleeding in from the upper right and yellow from the lower left. Each ring drifts independently on a cycle 20–30 seconds long, so the shape never repeats for minutes at a time. |
+| The four product illustrations | Hand-drawn vector art with soft-focus blur effects | A green payment card, a checkout form mid-payment, a credit approval receipt, and a scrolling list of payment rails. Each has a large blurred blob of colour drifting slowly behind it, which is what makes plain white cards feel warm. |
+| The two wiring diagrams | Hand-drawn line art that draws itself, then loops | Thin lines that sketch themselves onto the page when it loads — stems dropping from cards, sweeping along a rail, fanning into tiles — after which small pulses of light travel the routes forever. The routes deliberately cross, because each product feeds several capabilities. |
+| The glowing platform disc | Vector shapes with blur, several independent orbits | A green disc with four soft colour blobs orbiting inside it at different speeds, each also breathing in and out on its own separate rhythm. On phones this is replaced by a plain gradient, because the blur is too expensive for small devices. |
+| The code panel that types itself | A small amount of custom logic on a timer | A dark editor panel that reveals a request one line every fraction of a second, pauses, then reveals the response faster, holds for five seconds and starts over. A cursor blinks on whichever line is currently being written. |
+| The cycling headline word | Plain styling, on a timer | One word above the headline changes every two and a half seconds — each rises from below, holds, then slides up and out. Only ever one word visible. |
+| The self-filling checkout form | Plain styling, on a timer | Inside one product card, a card number types itself in four groups. Partway through, three of the four card-brand badges fade away and the remaining one slides across to take their place, as if the form had recognised the card. |
+| The endless list of payment rails | Plain styling, on a timer | A column of small labelled chips scrolling slowly upward forever, fading out at the top. It never visibly restarts, which is why the list is secretly printed twice. |
+| The closing aurora | A vector shape that morphs between drawn states | A wide band of blurred colour under the last section, its silhouette slowly rippling between four shapes on an eight-second loop. |
+| The video tiles | Video, plus a pop-up panel | Two black tiles with a partner logo and a play button. Clicking one dims the page and opens the full video. Dismissed by clicking away, the close button, or Escape. |
+| The menu dropdowns | Plain styling | Hovering a menu item fades a small white panel in while it rises slightly. There is an invisible strip bridging the gap so the panel does not vanish as your cursor travels toward it. |
+| Cards lifting on hover | Plain styling | The card floats up slightly, gains a soft paper-like shadow, and a small arrow slides in beside the title. |
+| Industry images pushing in | Plain styling | The photograph inside the card scales up slightly within its rounded frame, so it feels like leaning closer. Deliberately disabled on touchscreens. |
+| Footer link arrows | Plain styling | A small arrow slides in beside a link on hover — the quickest movement on the page. |
+| The promo strip | Plain styling | The strip darkens slightly and its arrow shuffles right. |
 
 ---
 
-## 5. What is genuinely hard
+## 5. What is fiddly
 
-**The illustrations, by a wide margin.** Four of the five three-dot rows above are
+**The illustrations dominate.** Four of the five most involved items above are
 drawings — the orb, the product cards, the wiring diagrams, the disc. Every one is
 built from shapes, gradients and blurs described coordinate by coordinate. There is no
 clever technique to learn; there is simply a lot of exact geometry, and being slightly
-off looks obviously wrong. Budget most of the time here.
+off looks obviously wrong.
 
-**The ambient motion is fiddly rather than difficult.** Nine rings drifting on nine
+**The ambient motion is easy to get subtly wrong.** Nine rings drifting on nine
 different cycles is not hard to write, but it is easy to get subtly wrong — if the
 timings are too similar the whole thing pulses in unison and reads as cheap.
 
@@ -153,9 +153,9 @@ timings are too similar the whole thing pulses in unison and reads as cheap.
 words stacked on top of each other, each fading in and out on a delay. No cleverness
 required.
 
-**Mobile is cheaper than you would guess.** Below tablet size, the drifting orb, the
-card blobs and the orbiting disc all switch off, and the wiring diagrams disappear
-entirely. Roughly a third of the expensive work simply does not run on a phone.
+**Mobile does far less.** Below tablet size, the drifting orb, the card blobs and the
+orbiting disc all switch off, and the wiring diagrams disappear entirely. A large share
+of the page's most involved work simply does not run on a phone.
 
 **A warning about the typeface.** The original uses a commercial font that costs money
 and cannot legally be copied from the original site. The spec substitutes a free

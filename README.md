@@ -46,9 +46,8 @@ output/example/
 
 **Two documents, two readers.** `PRD.md` tells a model how to build the site — exact
 values, class strings, keyframes. `PRD_description.md` tells a person what the site is
-and what it will cost: no hex codes, no pixels, no jargon, plus an effort table rating
-each effect from one dot (an afternoon) to three (a week or more), and a glossary that
-translates every technical term in the spec.
+— no hex codes, no pixels, no jargon — plus a table describing every effect in physical
+terms and a glossary that translates each technical term in the spec.
 
 The project name comes from the host. An existing folder is never overwritten — you
 will be asked first.
@@ -59,9 +58,9 @@ Hand `PRD.md` to any model with no other context and ask it to build the site. T
 the whole point: the document carries everything, so nothing else needs to travel with
 it.
 
-Read `PRD_description.md` yourself, or send it to whoever is paying for the work. It
-answers what the spec deliberately does not: what this actually is, and which parts are
-quietly expensive.
+Read `PRD_description.md` yourself, or send it to anyone who needs to understand the
+page without reading a specification. It answers what the spec deliberately does not:
+what this actually is, and how it behaves.
 
 **A run takes a while.** The workflow visits the page at three widths, sweeps scroll,
 hover and click states, samples a timeline after reload, and transcribes every graphic
@@ -115,8 +114,9 @@ A full run against a payments platform marketing page, in both registers:
   every graphic transcribed to text, all 30 animations with exact keyframes, and
   numeric acceptance criteria.
 - [`examples/example-PRD_description.md`](examples/example-PRD_description.md) — the
-  same site explained to someone non-technical: a walkthrough, an effort table rating
-  every effect, an honest note on where the time actually goes, and a glossary.
+  same site explained to someone non-technical: a walkthrough, a table describing every
+  effect in physical terms, a note on the parts that are easy to get wrong, and a
+  glossary.
 
 Together they set the quality bar for what a run should produce.
 
