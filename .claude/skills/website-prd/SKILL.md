@@ -39,7 +39,8 @@ rather than overwriting.
 
 ```
 output/<project>/
-  PRD.md                  the deliverable
+  PRD.md                  the build spec
+  PRD_description.md      the same site in plain language, for a non-technical reader
   TaskOrder.yaml          classification, if the user asked for it
   notes.md                decisions, substitutions, anything unresolved
   deny.txt                the brand-scrub list used in Phase 5
@@ -238,7 +239,7 @@ The reader must not learn the site's identity.
 
 ## Phase 6 — Author the PRD
 
-Write `PRD.md`. Number every section; cross-references must resolve.
+Write `PRD.md`, the build spec. Number every section; cross-references must resolve.
 
 Recommended spine, adapt as the site demands:
 
@@ -272,7 +273,70 @@ House style that makes a PRD buildable:
 
 ---
 
-## Phase 7 — Self-gate
+## Phase 7 — Author the plain-language companion
+
+Write `PRD_description.md`. Same site, same placeholder brand, same de-branding — but
+written for someone with **no technical background** who needs to understand what is
+being built and how hard it is.
+
+Think of the reader as a founder or designer briefing a developer. They will never
+open `PRD.md`. They still need to know what the page does, what it feels like, which
+parts are quietly expensive, and what the jargon in the spec actually means.
+
+**This is not a summary of the PRD.** It answers different questions. `PRD.md` says
+*how to build it*; `PRD_description.md` says *what it is and what it will cost you*.
+
+### Rules
+
+- **No hex codes, no pixel values, no class names, no code.** Say "a warm off-white,
+  like unbleached paper" — not `#f5f3eb`.
+- **Describe what a person sees**, in physical terms. Motion is the hardest thing to
+  convey; reach for real-world analogies.
+- **Every technical term gets explained in the same breath**, or moved to the glossary.
+- **Be honest about effort.** If something looks simple and is not, say so — that is
+  the single most useful thing this document does.
+
+### Spine
+
+```
+1  What this is           one paragraph, plainly
+2  What it feels like     the experience, start to finish
+3  The page, top to bottom  a walkthrough in ordinary words
+4  Effects, and how hard   the effort table (below)
+5  What is genuinely hard  where the time actually goes
+6  Jargon, translated      glossary of every technical term in PRD.md
+```
+
+### The effort table
+
+The centrepiece. One row per notable visual or interactive effect:
+
+```markdown
+| Effect | Effort | Built with | What you actually see |
+|---|---|---|---|
+| Interactive fluid simulation | ●●● | A 3D graphics library running on the graphics card | Colour swirls and smears under the cursor like paint stirred into water, settling slowly when you stop moving. |
+| Headline word swap | ●● | Plain styling, on a timer | One word above the headline changes every couple of seconds — each rises from below, holds, then slides up and out. |
+| Card lift on hover | ● | Plain styling | The card floats up slightly and a small arrow appears, as if the card were paper being picked up. |
+```
+
+- **●** an afternoon — ordinary styling, no custom logic
+- **●●** a day or two — timed sequences, hand-drawn graphics, coordinated states
+- **●●●** a week or more — physics, 3D, particle systems, scroll-linked scrubbing, or
+  anything needing custom shader work
+
+Rate against the *rebuild*, not the original. Sort hardest first — the reader wants the
+expensive parts up top.
+
+### Glossary
+
+Every term that appears in `PRD.md` and would stop a non-technical reader: the utility
+framework, gradients, easing, keyframes, viewport, breakpoint, SVG, DOM, hydration,
+server versus client rendering. One plain sentence each, no jargon inside the
+definition.
+
+---
+
+## Phase 8 — Self-gate
 
 Do not report done until every check passes. Report the results honestly.
 
@@ -288,8 +352,12 @@ Do not report done until every check passes. Report the results honestly.
 | G8 | Every `@keyframes` found appears in the animation index |
 | G9 | Every custom-property family that overrides a framework default is declared |
 | G10 | No application code was written |
+| G11 | `PRD_description.md` exists, and contains no hex code, pixel value or class name |
+| G12 | Every notable effect in `PRD.md` has a row in the effort table |
+| G13 | Every technical term used in `PRD.md` appears in the glossary |
+| G14 | The deny-list grep passes on `PRD_description.md` too |
 
-Then offer to publish the PRD as an artifact for sharing.
+Then offer to publish either document as an artifact for sharing.
 
 ---
 

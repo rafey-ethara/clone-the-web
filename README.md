@@ -35,13 +35,20 @@ so an LLM can rebuild it". Add anything you want honoured, for example:
 
 ```
 output/example/
-  PRD.md            the deliverable
-  TaskOrder.yaml    classification, when requested
-  notes.md          decisions, substitutions, anything unresolved
-  deny.txt          the brand-scrub list
-  evidence/         tokens, typography, animations, topology, behaviors, assets
+  PRD.md                the build spec
+  PRD_description.md    the same site in plain language
+  TaskOrder.yaml        classification, when requested
+  notes.md              decisions, substitutions, anything unresolved
+  deny.txt              the brand-scrub list
+  evidence/             tokens, typography, animations, topology, behaviors, assets
   screenshots/
 ```
+
+**Two documents, two readers.** `PRD.md` tells a model how to build the site — exact
+values, class strings, keyframes. `PRD_description.md` tells a person what the site is
+and what it will cost: no hex codes, no pixels, no jargon, plus an effort table rating
+each effect from one dot (an afternoon) to three (a week or more), and a glossary that
+translates every technical term in the spec.
 
 The project name comes from the host. An existing folder is never overwritten — you
 will be asked first.
@@ -51,6 +58,10 @@ will be asked first.
 Hand `PRD.md` to any model with no other context and ask it to build the site. That is
 the whole point: the document carries everything, so nothing else needs to travel with
 it.
+
+Read `PRD_description.md` yourself, or send it to whoever is paying for the work. It
+answers what the spec deliberately does not: what this actually is, and which parts are
+quietly expensive.
 
 **A run takes a while.** The workflow visits the page at three widths, sweeps scroll,
 hover and click states, samples a timeline after reload, and transcribes every graphic
@@ -98,10 +109,16 @@ Every literal in the PRD traces to something measured. Nothing is recalled.
 
 ## Example
 
-[`examples/example-PRD.md`](examples/example-PRD.md) is a full run against a payments
-platform marketing page: 24 sections, every graphic transcribed to text, all 30
-animations catalogued with exact keyframes, and numeric acceptance criteria. It sets the
-quality bar for what a run should produce.
+A full run against a payments platform marketing page, in both registers:
+
+- [`examples/example-PRD.md`](examples/example-PRD.md) — the build spec. 24 sections,
+  every graphic transcribed to text, all 30 animations with exact keyframes, and
+  numeric acceptance criteria.
+- [`examples/example-PRD_description.md`](examples/example-PRD_description.md) — the
+  same site explained to someone non-technical: a walkthrough, an effort table rating
+  every effect, an honest note on where the time actually goes, and a glossary.
+
+Together they set the quality bar for what a run should produce.
 
 ## Layout
 
